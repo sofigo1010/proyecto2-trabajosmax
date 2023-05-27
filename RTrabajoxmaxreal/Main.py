@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, jsonify, request, render_template
 from neo4j import GraphDatabase, basic_auth
 import json
 
@@ -40,12 +40,13 @@ class Neo4JExample:
 
 
     @staticmethod
-    #getCategorias
     def getCategorias(tx):
         result = tx.run('match (c: Categoria) return c.categoria')
         arrcategorias = []
         for record in result:
             arrcategorias.append(record["c.categoria"])
+        # Convertir a set para eliminar duplicados, luego convertir de nuevo a lista
+        arrcategorias = list(set(arrcategorias))
         return arrcategorias
 
     
@@ -99,7 +100,7 @@ def inicio():
 #@app.route('/form2', methods=['POST'])
 #def Form2():
     #return render_template('PrimerIngreso.html')
-@app.route('/Buscaritas', methods =['POST'])
+@app.route('/Buscaritas', methods =['GET'])
 def buscaritas():
     categorias = request.form["Categoria"] 
     listgetcategories = neo4j.callGetCategorias()
@@ -115,14 +116,24 @@ def buscaritas():
         
     return "preach"
     
-@app.route('/Agregarreal')
+@app.route('/Agregarreal', methods=['GET'])
 def agregar():
     return render_template("Agregarreal.html")
 #cambiar
 
-@app.route('/buscar', methods=['POST'])
+@app.route('/buscar', methods=['GET'])
 def buscar():
     return render_template('Buscaritas.html')
+
+@app.route('/index', methods=['GET'])
+def regresaralmain():
+    return render_template('Index.html')
+
+@app.route('/ver_categorias', methods=['GET'])
+def ver_categorias():
+    categorias = neo4j.callGetCategorias()
+    return jsonify(categorias=categorias)
+
 
 
 if __name__ == '__main__':

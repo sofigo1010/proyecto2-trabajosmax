@@ -121,3 +121,95 @@ h2{
     margin: 50px;
     max-width: 800px;
 }
+.inputbusqueda {
+    border-color: radial-gradient(902px at 10% 20%, rgb(18, 50, 90) 0%, rgb(207, 199, 252) 100.2%);
+    padding: 30px 140px;  
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin-right: 10px;
+    position: absolute; 
+    top: 350px; 
+    right: 250px;
+    resize: none; /* Esto evita que los usuarios cambien el tamaño de la caja de entrada */
+}
+
+.inputcategoria {
+    border-color: radial-gradient(902px at 10% 20%, rgb(18, 50, 90) 0%, rgb(207, 199, 252) 100.2%);
+    padding: 30px 140px;  
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    resize: none; /* Esto evita que los usuarios cambien el tamaño de la caja de entrada */
+    position: absolute; 
+    top: 30%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.inputEmpresa {
+    border-color: radial-gradient(902px at 10% 20%, rgb(18, 50, 90) 0%, rgb(207, 199, 252) 100.2%);
+    padding: 30px 140px;  
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    resize: none; /* Esto evita que los usuarios cambien el tamaño de la caja de entrada */
+    position: absolute; 
+    top: 45%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.inputpuesto {
+    border-color: radial-gradient(902px at 10% 20%, rgb(18, 50, 90) 0%, rgb(207, 199, 252) 100.2%);
+    padding: 30px 140px;  
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    resize: none; /* Esto evita que los usuarios cambien el tamaño de la caja de entrada */
+    position: absolute; 
+    top: 60%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.inputencargado {
+    border-color: radial-gradient(902px at 10% 20%, rgb(18, 50, 90) 0%, rgb(207, 199, 252) 100.2%);
+    padding: 30px 140px;  
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    resize: none; /* Esto evita que los usuarios cambien el tamaño de la caja de entrada */
+    position: absolute; 
+    top: 75%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.botonesagregartrab{
+    background:radial-gradient(902px at 10% 20%, rgb(18, 50, 90) 0%, rgb(207, 199, 252) 100.2%); 
+    border-color: radial-gradient(902px at 10% 20%, rgb(18, 50, 90) 0%, rgb(207, 199, 252) 100.2%);
+    color: white;
+    padding: 30px 100px;  
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 10px;
+    position: absolute; 
+    top:630px; 
+    right: 600px;
+}
+.displaycategorias{
+    position: relative; 
+    top: 250px; 
+    right: 330px ; 
+    color: white;
+    background: radial-gradient(902px at 10% 20%, rgb(18, 50, 90) 0%, rgb(207, 199, 252) 100.2%);
+    padding: 30px 50px; 
+    font-family: 'EB Garamond', Garamond, serif;
+    display: inline-block;
+
+}
