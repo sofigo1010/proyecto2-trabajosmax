@@ -198,18 +198,6 @@ h2{
     display: inline-block;
     font-size: 16px;
     margin-right: 10px;
-    position: absolute; 
-    top:630px; 
-    right: 600px;
-}
-.displaycategorias{
     position: relative; 
-    top: 250px; 
-    right: 330px ; 
-    color: white;
-    background: radial-gradient(902px at 10% 20%, rgb(18, 50, 90) 0%, rgb(207, 199, 252) 100.2%);
-    padding: 30px 50px; 
-    font-family: 'EB Garamond', Garamond, serif;
-    display: inline-block;
-
+    top:630px; 
 }
