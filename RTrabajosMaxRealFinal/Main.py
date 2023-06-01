@@ -95,7 +95,7 @@ class Neo4JExample:
 
 #se define la ruta del directorio
 app = Flask(__name__, template_folder='C:\\Users\\sofia\\Downloads\\RTrabajosMaxRealFinal')#aqui se empieza a crear la aplicacion
-neo4j = Neo4JExample('bolt://18.212.169.121:7687', 'neo4j', 'lungs-binder-videos')
+neo4j = Neo4JExample('bolt://44.202.37.222:7687', 'neo4j', 'feed-sea-guide')
 
 
 @app.route('/') #se define un temporador para la ruta principal '/login'
