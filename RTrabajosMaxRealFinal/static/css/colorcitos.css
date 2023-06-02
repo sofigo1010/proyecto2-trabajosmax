@@ -5,7 +5,10 @@
     padding: 150px;
 
 }
-
+@font-face {
+    font-family: "ManfitteBold";
+    src: url("../static/font/ManfitteBold.otf") format("opentype");
+  }
 body{
     background-image: linear-gradient(to top, #bdc2e8 0%, #bdc2e8 1%, #e6dee9 100%);
     background-repeat: no-repeat ;
@@ -108,18 +111,20 @@ h1{
 }
 
 h2{
-    font-size: 24px;
+    font-size: 40px;
     font-weight: bold;
     margin-right: 20px;
     text-align: center;
+    font-family: "ManfitteBold";
 }
 .contenido {
     font-size: 16px;
     font-weight: bold;
-    margin-right: 20px;
+    margin-right: 25px;
     text-align: center;
     margin: 50px;
     max-width: 800px;
+    font-family: "ManfitteBold";
 }
 .inputbusqueda {
     border-color: radial-gradient(902px at 10% 20%, rgb(18, 50, 90) 0%, rgb(207, 199, 252) 100.2%);
