@@ -32,11 +32,11 @@ css/estilo.css
     <main>
         <!--  Espacios -->
   
-          <div class="agreguemos">
+          <div class="eliminemos">
             <div>
-                <div class="agregacionreal">
+                <div class="eliminacionreal">
     
-                    <form action="/agregarTrabajo" method="POST">
+                    <form action="/eliminarTrabajo" method="POST">
                       <!-- aqui solo tiene que ingresar los datos y devolverlos para guardarlos en la base de datos-->
                         <input id="Categoria" type = "text" value="{{ Categoria }}" name="Categoria" class="inputcategoria" rows="1" placeholder="Categoria de la empresa" required> </input>
                         <input id="Empresa" type = "text" value="{{ Empresa }}" name="Empresa" class="inputEmpresa" rows="1" placeholder="Nombre de la Empresa" required> </input>
@@ -45,7 +45,7 @@ css/estilo.css
    
                       <div >
                         <div >
-                            <button type = "submit" class="botonesagregartrab" required>Agregar Trabajo</button>
+                            <button type = "submit" class="botonesagregartrab" required>Eliminar Trabajo</button>
                         </div>
                         <div id="meter"></div>
                   
@@ -54,9 +54,9 @@ css/estilo.css
                 </div>
                 
                 <div id="dvInserta">
-                    {% if inserta %} 
+                    {% if elimina %} 
                         <script text="js" lang="js">
-                            alert("Trabajo agregado correctamente");
+                            alert("Trabajo Eliminado Correctamente");
                         </script>
                     {% endif %}
                 </div>

@@ -15,6 +15,11 @@ class Neo4JExample:
             entrada = session.write_transaction(self.createNewJob, categoria, empresa, puesto, encargado)
         return entrada
     
+    def callDeleteJob(self, categoria, empresa, puesto, encargado):
+        with self.driver.session(database="neo4j") as session:
+            salida = session.write_transaction(self.deleteJob, categoria, empresa, puesto, encargado)
+        return salida
+    
     def callGetCategorias(self):
         with self.driver.session(database="neo4j") as session:
             entrada = session.read_transaction(self.getCategorias)
@@ -91,11 +96,30 @@ class Neo4JExample:
                 "Encargado: " + record["Encargado"]
             ])
         return trabajos
+    
+    @staticmethod
+    def deleteJob(tx, categoria, empresa, puesto, encargado):
+        tx.run("""
+            MATCH (e:Empresa {name: $empresa})-[r:Categoria_de]->(c:Categoria {categoria: $categoria})
+            DELETE r
+            """, categoria=categoria, empresa=empresa)
+        tx.run("""
+            MATCH (e:Empresa {name: $empresa})-[r:Puesto_disponible]->(p:Puesto {name: $puesto})
+            DELETE r
+            """, empresa=empresa, puesto=puesto)
+        tx.run("""
+            MATCH (e:Empresa {name: $empresa})-[r:Encargado_de]->(en:Encargado {name: $encargado})
+            DELETE r
+            """, empresa=empresa, encargado=encargado)
+        tx.run("MATCH (c:Categoria {categoria: $categoria}) DETACH DELETE c", categoria=categoria)
+        tx.run("MATCH (e:Empresa {name: $empresa}) DETACH DELETE e", empresa=empresa)
+        tx.run("MATCH (p:Puesto {name: $puesto}) DETACH DELETE p", puesto=puesto)
+        tx.run("MATCH (en:Encargado {name: $encargado}) DETACH DELETE en", encargado=encargado)
 
 
 #se define la ruta del directorio
 app = Flask(__name__, template_folder='C:\\Users\\sofia\\Downloads\\RTrabajosMaxRealFinal')#aqui se empieza a crear la aplicacion
-neo4j = Neo4JExample('bolt://44.202.37.222:7687', 'neo4j', 'feed-sea-guide')
+neo4j = Neo4JExample('bolt://52.23.206.84:7687', 'neo4j', 'majority-photos-managements')
 
 
 @app.route('/') #se define un temporador para la ruta principal '/login'
@@ -141,6 +165,19 @@ def agregarTrabajo():
     return render_template('Agregarreal.html', inserta = True)
 
 
+@app.route('/eliminarTrabajo', methods =['POST'])
+def eliminarTrabajo():
+    categoria = request.form["Categoria"] 
+    empresa = request.form["Empresa"] 
+    puesto = request.form["Puesto"] 
+    encargado = request.form["Encargado"] 
+    valor = neo4j.callDeleteJob(categoria, empresa, puesto, encargado)
+
+    return render_template('Eliminarreal.html', elimina = True)
+
+@app.route('/Eliminarreal', methods=['GET'])
+def eliminar():
+    return render_template("Eliminarreal.html")
 
 @app.route('/Agregarreal', methods=['GET'])
 def agregar():
